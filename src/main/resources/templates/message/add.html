@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="/css/main.css" />
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Spring Boot</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="/message">Messages</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <form action="#" th:action="@{/message/add}" th:object="${message}" method="post">
+            <div class="form-group">
+                <label for="sender">@</label>
+                <input type="text" class="form-control" placeholder="Username" id="sender" th:field="*{sender}" />
+            </div>
+            <div class="form-group">
+                <label for="text">Message</label>
+                <input type="text" class="form-control" placeholder="Message" id="text"  th:field="*{text}" />
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<script type="text/javascript"
+        src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
