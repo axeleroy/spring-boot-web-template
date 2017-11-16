@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sh.leroy.axel.spring.exceptions.message.MessageNotFoundException;
 import sh.leroy.axel.spring.model.Message;
 import sh.leroy.axel.spring.repositories.MessageRepository;
 
@@ -28,8 +29,8 @@ public class MessageController {
     }
 
     @GetMapping("/{id}")
-    public String findOne(Model model, @PathVariable Long id) {
-        model.addAttribute("message", repository.findOne(id));
+    public String findOne(Model model, @PathVariable long id) {
+        model.addAttribute("message", repository.findOne(id).orElseThrow(() -> new MessageNotFoundException(id)));
         return "message/show";
     }
 
