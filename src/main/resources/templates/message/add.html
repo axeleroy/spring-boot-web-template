@@ -4,9 +4,9 @@
     <title>Spring Boot Thymeleaf Hello World Example</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.0/css/bootstrap.min.css"
           rel="stylesheet" type="text/css"
-          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}" />
+          th:href="@{/webjars/bootstrap/3.3.0/css/bootstrap.min.css}" />
 
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
@@ -38,8 +38,7 @@
 </div>
 <!-- /.container -->
 
-<script type="text/javascript"
-        src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div th:include="fragments/footer"></div>
 
 </body>
 </html>

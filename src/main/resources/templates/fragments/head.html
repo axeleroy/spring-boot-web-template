@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title th:include=":: #pageTitle">Header Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.0/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.0/css/bootstrap.min.css}" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="/css/main.css" />
+
+</head>
+<body>
+
+</body>
+</html>
