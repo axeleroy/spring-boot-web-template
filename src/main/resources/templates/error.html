@@ -1,10 +1,20 @@
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Error Occurred</title></head>
+<head th:include="fragments/head">
+    <title id="pageTitle">Spring Boot Thymeleaf Hello World Example</title>
+</head>
 <body>
-<h1>Error Occurred!</h1>
-<b>[<span th:text="${status}">status</span>]
-    <span th:text="${error}">error</span>
-</b>
-<p th:text="${message}">message</p>
+
+<nav th:include="fragments/navbar"></nav>
+
+    <div class="container">
+        <h1>Error Occurred!</h1>
+        <b>[<span th:text="${status}">status</span>]
+            <span th:text="${error}">error</span>
+        </b>
+        <p th:text="${message}">message</p>
+    </div>
+
+<div th:include="fragments/footer"></div>
 </body>
 </html>

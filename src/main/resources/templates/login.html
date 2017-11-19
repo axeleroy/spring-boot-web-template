@@ -8,14 +8,39 @@
 <nav th:include="fragments/navbar"></nav>
 
 <div class="container">
-    <div th:if="${param.error}">
+    <div th:if="${loginError}">
         <div class="alert alert-danger">
-            Invalid username and password.
+            Invalid e-mail address and password.
         </div>
     </div>
-    <div th:if="${param.logout}">
+    <div th:if="${emailExists}">
+        <div class="alert alert-danger">
+            Email already exists.
+        </div>
+    </div>
+    <div th:if="${emptyField}">
+        <div class="alert alert-danger">
+            Fields have been left empty.
+        </div>
+    </div>
+    <div th:if="${invalidEmail}">
+        <div class="alert alert-danger">
+            Invalid e-mail address.
+        </div>
+    </div>
+    <div th:if="${passwordMismatch}">
+        <div class="alert alert-danger">
+            Passwords do not match.
+        </div>
+    </div>
+    <div th:if="${logout}">
         <div class="alert alert-info">
             You have been logged out.
+        </div>
+    </div>
+    <div th:if="${registerSuccessful}">
+        <div class="alert alert-success">
+            Your account has been registered.
         </div>
     </div>
     <div class="row">
@@ -51,8 +76,8 @@
             <div class="text-center"><h3><b>Log In</b></h3></div>
             <form id="ajax-login-form" th:action="@{/login}" method="post" role="form" autocomplete="off">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off" />
+                    <label for="username">E-mail address</label>
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="E-mail address" value="" autocomplete="off" />
                 </div>
 
                 <div class="form-group">

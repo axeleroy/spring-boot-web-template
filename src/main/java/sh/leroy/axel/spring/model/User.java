@@ -2,10 +2,8 @@ package sh.leroy.axel.spring.model;
 
 import sh.leroy.axel.spring.dto.UserDto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class User {
@@ -16,6 +14,8 @@ public class User {
     private String lastName;
     private String password;
     private String email;
+    @ElementCollection
+    private Set<String> roles;
 
     public User() {
     }
@@ -25,6 +25,8 @@ public class User {
         this.lastName = user.getLastName();
         this.password = user.getPassword();
         this.email = user.getEmail();
+        this.roles = new HashSet<>();
+        roles.add("USER");
     }
 
     public Long getId() {
@@ -61,5 +63,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<String> getRoles() {
+        return Collections.unmodifiableList(new ArrayList<>(roles));
+    }
+
+    public void addRole(String role) {
+        roles.add(role);
     }
 }

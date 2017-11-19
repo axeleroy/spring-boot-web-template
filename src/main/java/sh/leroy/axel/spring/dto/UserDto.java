@@ -1,9 +1,12 @@
 package sh.leroy.axel.spring.dto;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import sh.leroy.axel.spring.validation.email.ValidEmail;
+import sh.leroy.axel.spring.validation.password.PasswordMatches;
 
 import javax.validation.constraints.NotNull;
 
+@PasswordMatches
 public class UserDto {
     @NotNull
     @NotEmpty
@@ -17,7 +20,8 @@ public class UserDto {
     @NotEmpty
     private String password;
     private String matchingPassword;
-     
+
+    @ValidEmail
     @NotNull
     @NotEmpty
     private String email;
