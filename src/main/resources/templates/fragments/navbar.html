@@ -19,15 +19,20 @@
                         <ul class="dropdown-menu dropdown-lr" role="menu">
                             <div class="col-lg-12">
                                 <div class="text-center"><h3><b>Log In</b></h3></div>
-                                <form id="ajax-login-form" th:action="@{/login}" method="post" role="form" autocomplete="off">
+                                <form id="ajax-login-form" th:action="@{/login}" method="post" role="form" autocomplete="off"
+                                      data-toggle="validator">
                                     <div class="form-group">
-                                        <label for="username">Username</label>
-                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off" />
+                                        <label for="username" class="control-label">E-mail address</label>
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                                               placeholder="hermione.granger@hogwarts.ac.uk" value="" autocomplete="off"
+                                               data-error="Invalid e-mail address" required="true" />
+                                        <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off" />
+                                        <label for="password" class="control-label">Password</label>
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control"
+                                               placeholder="Password" autocomplete="off" required="true" />
                                     </div>
 
                                     <div class="form-group">
@@ -37,7 +42,8 @@
                                                 <label for="remember"> Remember Me</label>
                                             </div>
                                             <div class="col-xs-5 pull-right">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In" />
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4"
+                                                       class="form-control btn btn-success" value="Log In" />
                                             </div>
                                         </div>
                                     </div>

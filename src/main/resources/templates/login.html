@@ -46,26 +46,43 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="text-center"><h3><b>Register</b></h3></div>
-            <form id="ajax-register-form" th:action="@{/register}" th:object="${user}" method="post" role="form" autocomplete="off">
+            <form id="ajax-register-form" th:action="@{/register}" th:object="${user}" method="post" role="form"
+                  autocomplete="off" data-toggle="validator">
                 <div class="form-group">
-                    <input type="text" th:field="*{firstName}" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="Firstname" value="" />
+                    <label for="firstname" class="control-label">Firstname</label>
+                    <input type="text" th:field="*{firstName}" name="firstname" id="firstname" tabindex="1"
+                           class="form-control" placeholder="Hermione" value="" required="true" />
                 </div>
                 <div class="form-group">
-                    <input type="text" th:field="*{lastName}" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="" />
+                    <label for="lastname" class="control-label">Lastname</label>
+                    <input type="text" th:field="*{lastName}" name="lastname" id="lastname" tabindex="1"
+                           class="form-control" placeholder="Granger" value="" required="true" />
                 </div>
                 <div class="form-group">
-                    <input type="email" th:field="*{email}" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" />
+                    <label for="email" class="control-label">E-mail address</label>
+                    <input type="email" th:field="*{email}" name="email" id="email" tabindex="1" class="form-control"
+                           placeholder="hermione.granger@hogwarts.ac.uk" value=""
+                           data-error="This e-mail address is invalid" required="true" />
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                    <input type="password" th:field="*{password}" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" />
+                    <label for="loginPassword" class="control-label">Password</label>
+                    <input type="password" th:field="*{password}" name="password" id="loginPassword" tabindex="2"
+                           class="form-control" data-minlength="6" placeholder="********" required="true" />
+                    <div class="help-block">Password must be longer than 6 characters</div>
                 </div>
                 <div class="form-group">
-                    <input type="password" th:field="*{matchingPassword}" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" />
+                    <label for="confirm-password" class="control-label">Confirm password</label>
+                    <input type="password" th:field="*{matchingPassword}" name="confirm-password" id="confirm-password"
+                           tabindex="2" class="form-control" data-match="#loginPassword" placeholder="********"
+                           data-match-error="Passwords don't match" required="true" />
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-6 col-xs-offset-3">
-                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-info" value="Register Now" />
+                            <input type="submit" name="register-submit" id="register-submit" tabindex="4"
+                                   class="form-control btn btn-info" value="Register Now" />
                         </div>
                     </div>
                 </div>
@@ -74,15 +91,20 @@
         </div>
         <div class="col-sm-6">
             <div class="text-center"><h3><b>Log In</b></h3></div>
-            <form id="ajax-login-form" th:action="@{/login}" method="post" role="form" autocomplete="off">
+            <form id="ajax-login-form" th:action="@{/login}" method="post" role="form" autocomplete="off"
+                  data-toggle="validator">
                 <div class="form-group">
-                    <label for="username">E-mail address</label>
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="E-mail address" value="" autocomplete="off" />
+                    <label for="username" class="control-label">E-mail address</label>
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                           placeholder="hermione.granger@hogwarts.ac.uk" value="" autocomplete="off"
+                           data-error="Invalid e-mail address" required="true" />
+                    <div class="help-block with-errors"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off" />
+                    <label for="password" class="control-label">Password</label>
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control"
+                           placeholder="Password" autocomplete="off" required="true" />
                 </div>
 
                 <div class="form-group">
@@ -92,7 +114,8 @@
                             <label for="remember"> Remember Me</label>
                         </div>
                         <div class="col-xs-5 pull-right">
-                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In" />
+                            <input type="submit" name="login-submit" id="login-submit" tabindex="4"
+                                   class="form-control btn btn-success" value="Log In" />
                         </div>
                     </div>
                 </div>
