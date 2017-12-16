@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head">
+    <title id="pageTitle" th:text="${user.username}'s profile">Profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.0/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.0/css/bootstrap.min.css}" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/animate.css}"
+          href="/css/animate.css" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="/css/main.css" />
+
+</head>
+<body>
+
+<nav th:include="fragments/navbar"></nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1 th:text="${user.getUsername()}">Username</h1>
+        <p><strong>Firstname:</strong> <span th:text="${user.getFirstName()}"></span></p>
+        <p><strong>Lastname:</strong> <span th:text="${user.getLastName()}"></span></p>
+        <p><strong>E-mail address:</strong> <span th:text="${user.getEmail()}"></span></p>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:include="fragments/footer"></div>
+
+</body>
+</html>

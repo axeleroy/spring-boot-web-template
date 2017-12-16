@@ -38,7 +38,7 @@ public class UserService implements IUserService {
     }
 
     private boolean usernameExists(String username) {
-        User user = repository.findByUsernameIgnoreCase(username);
+        User user = repository.findByUsernameIgnoreCase(username).orElse(null);
         return user != null;
     }
 }
