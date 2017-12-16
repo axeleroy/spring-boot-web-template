@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sh.leroy.axel.spring.dto.UserDto;
 import sh.leroy.axel.spring.exceptions.user.EmailExistsException;
+import sh.leroy.axel.spring.exceptions.user.UsernameExistsException;
 import sh.leroy.axel.spring.model.User;
 import sh.leroy.axel.spring.repositories.UserRepository;
 
@@ -23,14 +24,21 @@ public class UserService implements IUserService {
               "There is an account with that email adress: "
               +  accountDto.getEmail());
         }
+        if (usernameExists(accountDto.getUsername())) {
+            throw new UsernameExistsException(
+                "There is an account with that username: "
+                + accountDto.getUsername());
+        }
 
         return new User(accountDto);
     }
     private boolean emailExist(String email) {
-        User user = repository.findByEmail(email);
-        if (user != null) {
-            return true;
-        }
-        return false;
+        User user = repository.findByEmailIgnoreCase(email);
+        return user != null;
+    }
+
+    private boolean usernameExists(String username) {
+        User user = repository.findByUsernameIgnoreCase(username);
+        return user != null;
     }
 }

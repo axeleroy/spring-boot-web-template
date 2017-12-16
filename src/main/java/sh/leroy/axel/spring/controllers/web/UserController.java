@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 import sh.leroy.axel.spring.dto.UserDto;
 import sh.leroy.axel.spring.exceptions.user.EmailExistsException;
+import sh.leroy.axel.spring.exceptions.user.UsernameExistsException;
 import sh.leroy.axel.spring.model.User;
 import sh.leroy.axel.spring.repositories.UserRepository;
 import sh.leroy.axel.spring.service.user.UserService;
@@ -67,6 +68,8 @@ public class UserController {
             } catch (EmailExistsException e) {
                 model.addAttribute("emailExists", true);
                 e.printStackTrace();
+            } catch (UsernameExistsException e) {
+                model.addAttribute("usernameExists", true);
             }
         } else {
             errors.getAllErrors().forEach(e -> {
@@ -77,6 +80,9 @@ public class UserController {
                         break;
                     case "Invalid email":
                         model.addAttribute("invalidEmail", true);
+                        break;
+                    case "Invalid username":
+                        model.addAttribute("invalidUsername", true);
                         break;
                     case "Passwords don't match":
                         model.addAttribute("passwordMismatch", true);

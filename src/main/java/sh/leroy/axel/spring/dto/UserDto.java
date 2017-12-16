@@ -8,6 +8,11 @@ import javax.validation.constraints.NotNull;
 
 @PasswordMatches
 public class UserDto {
+    // @ValidUsername
+    @NotNull
+    @NotEmpty
+    private String username;
+
     @NotNull
     @NotEmpty
     private String firstName;
@@ -25,6 +30,14 @@ public class UserDto {
     @NotNull
     @NotEmpty
     private String email;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getFirstName() {
         return firstName;

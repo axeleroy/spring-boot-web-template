@@ -21,20 +21,20 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserDetails loadUserByUsername(String email)
+    public UserDetails loadUserByUsername(String emailOrUsername)
       throws UsernameNotFoundException {
   
-        User user = userRepository.findByEmail(email);
+        User user = userRepository.findByEmailOrUsernameIgnoreCase(emailOrUsername, emailOrUsername);
         if (user == null) {
             throw new UsernameNotFoundException(
-              "No user found with username: "+ email);
+              "No user found with username: "+ emailOrUsername);
         }
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
         return  new org.springframework.security.core.userdetails.User
-          (user.getEmail(), 
+          (user.getUsername(),
           user.getPassword().toLowerCase(), enabled, accountNonExpired, 
           credentialsNonExpired, accountNonLocked, 
           getAuthorities(user.getRoles()));

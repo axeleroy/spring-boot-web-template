@@ -10,12 +10,17 @@
 <div class="container">
     <div th:if="${loginError}">
         <div class="alert alert-danger">
-            Invalid e-mail address and password.
+            Invalid username, e-mail address or password.
         </div>
     </div>
     <div th:if="${emailExists}">
         <div class="alert alert-danger">
             Email already exists.
+        </div>
+    </div>
+    <div th:if="${usernameExists}">
+        <div class="alert alert-danger">
+            Username already exists.
         </div>
     </div>
     <div th:if="${emptyField}">
@@ -48,6 +53,11 @@
             <div class="text-center"><h3><b>Register</b></h3></div>
             <form id="ajax-register-form" th:action="@{/register}" th:object="${user}" method="post" role="form"
                   autocomplete="off" data-toggle="validator">
+                <div class="form-group">
+                    <label for="username" class="control-label">Username</label>
+                    <input type="text" th:field="*{username}" name="username" id="username" tabindex="1"
+                           class="form-control" placeholder="HermioneGranger76" value="" required="true" />
+                </div>
                 <div class="form-group">
                     <label for="firstname" class="control-label">Firstname</label>
                     <input type="text" th:field="*{firstName}" name="firstname" id="firstname" tabindex="1"
@@ -86,7 +96,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <input type="hidden" class="hide" name="token" id="token" value="7c6f19960d63f53fcd05c3e0cbc434c0" /> -->
             </form>
         </div>
         <div class="col-sm-6">
@@ -94,11 +103,10 @@
             <form id="ajax-login-form" th:action="@{/login}" method="post" role="form" autocomplete="off"
                   data-toggle="validator">
                 <div class="form-group">
-                    <label for="username" class="control-label">E-mail address</label>
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                    <label for="username-or-email" class="control-label">E-mail address or username</label>
+                    <input type="text" name="username" id="username-or-email" tabindex="1" class="form-control"
                            placeholder="hermione.granger@hogwarts.ac.uk" value="" autocomplete="off"
-                           data-error="Invalid e-mail address" required="true" />
-                    <div class="help-block with-errors"></div>
+                           required="true" />
                 </div>
 
                 <div class="form-group">
@@ -129,7 +137,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6" /> -->
             </form>
         </div>
     </div>
