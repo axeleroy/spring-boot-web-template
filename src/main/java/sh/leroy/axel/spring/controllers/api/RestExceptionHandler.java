@@ -16,7 +16,6 @@ import sh.leroy.axel.spring.exceptions.message.MessageNotFoundException;
 import javax.validation.ConstraintViolationException;
 
 @ControllerAdvice
-@RequestMapping("/api")
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({ MessageNotFoundException.class })
     protected ResponseEntity<?> handleMessageNotFound(Exception ex, WebRequest request) {

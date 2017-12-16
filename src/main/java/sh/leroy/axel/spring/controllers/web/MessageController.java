@@ -8,8 +8,6 @@ import sh.leroy.axel.spring.exceptions.message.MessageNotFoundException;
 import sh.leroy.axel.spring.model.Message;
 import sh.leroy.axel.spring.repositories.MessageRepository;
 
-import java.util.Arrays;
-
 @Controller
 @RequestMapping("/message")
 public class MessageController {
@@ -38,5 +36,10 @@ public class MessageController {
     public String create(@ModelAttribute Message message) {
         repository.save(message);
         return "redirect:/message";
+    }
+
+    @ExceptionHandler({ MessageNotFoundException.class })
+    protected String handleMessageNotFound(MessageNotFoundException ex) {
+        return "message/404";
     }
 }
