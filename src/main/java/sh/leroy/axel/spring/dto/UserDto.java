@@ -3,12 +3,13 @@ package sh.leroy.axel.spring.dto;
 import org.hibernate.validator.constraints.NotEmpty;
 import sh.leroy.axel.spring.validation.email.ValidEmail;
 import sh.leroy.axel.spring.validation.password.PasswordMatches;
+import sh.leroy.axel.spring.validation.username.ValidUsername;
 
 import javax.validation.constraints.NotNull;
 
 @PasswordMatches
 public class UserDto {
-    // @ValidUsername
+    @ValidUsername
     @NotNull
     @NotEmpty
     private String username;
