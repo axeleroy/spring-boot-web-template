@@ -29,6 +29,10 @@
         <p><strong>Firstname:</strong> <span th:text="${user.getFirstName()}"></span></p>
         <p><strong>Lastname:</strong> <span th:text="${user.getLastName()}"></span></p>
         <p><strong>E-mail address:</strong> <span th:text="${user.getEmail()}"></span></p>
+
+        <div th:if="${user.getUsername() == #authentication.getName()}">
+            <a href="/profile/edit" class="btn btn-default">Edit</a>
+        </div>
     </div>
 
 </div>

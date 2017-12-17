@@ -1,17 +1,23 @@
 package sh.leroy.axel.spring.model;
 
 import sh.leroy.axel.spring.dto.UserDto;
+import sh.leroy.axel.spring.validation.email.ValidEmail;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Entity
 public class User {
     @Id
     private String username;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
     private String password;
+    @ValidEmail
+    @NotNull
     private String email;
     @ElementCollection
     private Set<String> roles;

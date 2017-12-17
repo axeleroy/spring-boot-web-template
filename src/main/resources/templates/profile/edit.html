@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head">
+    <title id="pageTitle" th:text="Edit ${user.username}'s information">Profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.0/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.0/css/bootstrap.min.css}" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/animate.css}"
+          href="/css/animate.css" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="/css/main.css" />
+
+</head>
+<body>
+
+<nav th:include="fragments/navbar"></nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1 th:text="${user.username}">Username</h1>
+        <form action="#" th:action="@{/profile/edit}" th:object="${user}" method="post" data-toggle="validator">
+            <div class="form-group">
+                <label for="firstname" class="control-label">Firstname</label>
+                <input type="text" class="form-control" placeholder="Hermione" id="firstname" required="true"
+                       th:value="${user.getFirstName()}" th:field="*{firstName}" />
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="control-label">Lastname</label>
+                <input type="text" class="form-control" placeholder="Granger" id="lastname" required="true"
+                       th:value="${user.getLastName()}" th:field="*{lastName}" />
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">E-mail address</label>
+                <input type="email" class="form-control" placeholder="hermione.granger@hogwarts.ac.uk" id="email"
+                       required="true" th:value="${user.getEmail()}" th:field="*{email}"
+                       data-error="This e-mail address is invalid" />
+                <div class="help-block with-errors"></div>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- /.container -->
+
+<div th:include="fragments/footer"></div>
+
+</body>
+</html>

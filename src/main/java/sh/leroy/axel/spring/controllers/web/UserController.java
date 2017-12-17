@@ -67,7 +67,6 @@ public class UserController {
                 registered = service.registerNewUserAccount(accountDto);
             } catch (EmailExistsException e) {
                 model.addAttribute("emailExists", true);
-                e.printStackTrace();
             } catch (UsernameExistsException e) {
                 model.addAttribute("usernameExists", true);
             }
